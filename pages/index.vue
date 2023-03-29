@@ -9,6 +9,11 @@
     <input @change="addfile" type="file">
     <button @click="sendFile">Сохранить</button>
 
+    <div v-for="user of users" :key="user.id">
+        <!-- <p> {{ user }}</p> -->
+        <p> {{ user.id }} {{ user.name }} {{ user.email }}</p>
+    </div>
+
 </template>
 
 <script setup>
@@ -25,6 +30,11 @@ const sendFile = async() => {
     console.log(resp)
 }
 
+// const users = ref([])
+// const {data:users} = await useFetch('/api/user',{transform:(_data)=>{_data.users}})
+const {data:users} = await useFetch('/api/user')
+console.log(users)
+// users.value = data.users
 </script>
 
 <style>

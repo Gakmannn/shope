@@ -2,8 +2,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export default defineEventHandler( async (event) => {
-  const users = await prisma.user.findMany({
-    where: {id:1}
-  })
-  return {users}
+  const users = await prisma.user.findMany({})
+  return [...users]
 })

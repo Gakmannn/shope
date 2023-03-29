@@ -12,6 +12,11 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['./stores'],
   },
+  nitro: {
+    imports: {
+      dirs: ['./controllers'],
+    },
+  },
   pinia: {
     autoImports: ['defineStore', 'mapStores'],
   },
@@ -29,7 +34,7 @@ export default defineNuxtConfig({
     prefetch: true,
     preload: true
   },
-  // typescript: {shim:false},
+  typescript: {shim:false},
   build: {transpile:['vuetify']},
   vite: { ssr: { noExternal: ['vuetify']}}
 })
