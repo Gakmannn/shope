@@ -8,6 +8,7 @@
 
     <input @change="addfile" type="file">
     <button @click="sendFile">Сохранить</button>
+    <button @click="sendPost">Сохранить</button>
 
     <div v-for="user of users" :key="user.id">
         <!-- <p> {{ user }}</p> -->
@@ -27,6 +28,12 @@ const sendFile = async() => {
     console.log(file.value[0])
     data.append('images[0]', file.value[0])
     const resp = await $fetch('/api/files', {method:'POST', body:data})
+    console.log(resp)
+}
+
+const sendPost = async() => {
+    const data = { a: 10, b: [0, 2] }
+    const resp = await $fetch('/api/posts', {method:'POST', body:data })
     console.log(resp)
 }
 

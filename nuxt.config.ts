@@ -36,5 +36,11 @@ export default defineNuxtConfig({
   },
   typescript: {shim:false},
   build: {transpile:['vuetify']},
-  vite: { ssr: { noExternal: ['vuetify']}}
+  vite: { 
+    ssr: { noExternal: ['vuetify']},
+    // test: {
+    //   globals: true,
+    //   environment: 'jsdom',
+    // },
+  }
 })

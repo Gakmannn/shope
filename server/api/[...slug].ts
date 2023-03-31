@@ -8,9 +8,13 @@ router.post('/users', defineEventHandler(userController.setUser))
 router.put('/users/:id', defineEventHandler(userController.updateUser))
 router.delete('/users/:id', defineEventHandler(userController.deleteUser))
 
-router.get('/posts', defineEventHandler((event) => {return {method:getMethod(event)}}))
+router.post('/posts', defineEventHandler(async(event) => {
+  const body = await readBody(event)
+  console.log('server',body)
+  return {body}
+}))
 router.get('/posts/:id', defineEventHandler(() => 'Hello World'))
-router.post('/posts', defineEventHandler(() => 'Hello World'))
+// router.post('/posts', defineEventHandler(() => 'Hello World'))
 router.put('/posts/:id', defineEventHandler(() => 'Hello World'))
 router.delete('/posts/:id', defineEventHandler(() => 'Hello World'))
 
