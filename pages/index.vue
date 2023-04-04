@@ -6,7 +6,7 @@
     </div>
     <!-- <button @click="testStore.increment">{{testStore.count}}</button> -->
 
-    <input @change="addfile" type="file">
+    <input @change="addfile" type="file" multiple>
     <button @click="sendFile">Сохранить</button>
     <button @click="sendPost">Сохранить</button>
 
@@ -17,16 +17,22 @@
 
 </template>
 
-<script setup>
+<script></script>
+
+<script setup lang="ts">
 const testStore = useTest()
-const file = ref([])
-const addfile = (e)=>{
-    file.value.push(e.target.files[0])
+const files = ref([]) as any
+const addfile = (e:any)=>{
+    files.value = e.target.files
 }
 const sendFile = async() => {
     const data = new FormData()
-    console.log(file.value[0])
-    data.append('images[0]', file.value[0])
+    console.log(files)
+    for (let file of files.value) {
+        data.append('images', file)
+    }
+    data.append('text', 'text')
+    data.append('json', JSON.stringify(testStore))
     const resp = await $fetch('/api/files', {method:'POST', body:data})
     console.log(resp)
 }
@@ -39,7 +45,7 @@ const sendPost = async() => {
 
 // const users = ref([])
 // const {data:users} = await useFetch('/api/user',{transform:(_data)=>{_data.users}})
-const {data:users} = await useFetch('/api/user')
+const {data:users}:any= await useFetch('/api/user')
 console.log(users)
 // users.value = data.users
 </script>

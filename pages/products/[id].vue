@@ -1,16 +1,17 @@
 <template>
     <div>
-        <p>{{ product.title }}</p>
-        <p>{{ product.price }}</p>
-        <p>{{ product.id }}</p>
+        <p>{{ product?.title }}</p>
+        <p>{{ product?.price }}</p>
+        <p>{{ product?.id }}</p>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     const { id } = useRoute().params
     const url = 'https://fakestoreapi.com/products/' + id
 
-    const { data:product } = await useFetch(url, { key: id })
+    // @ts-ignore
+    const { data:product }: any = await useFetch(url, { key: id })
 
     definePageMeta({
         layout: 'products'

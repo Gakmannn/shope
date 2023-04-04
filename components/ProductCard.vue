@@ -20,7 +20,7 @@
     </v-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
  const { product } = defineProps(['product'])
 </script>
 
