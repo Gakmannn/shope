@@ -12,6 +12,7 @@
     "vue": "latest"
   },
   "devDependencies": {
+    "@nuxt/devtools": "^0.3.1",
     "@types/busboy": "^1.5.0",
     "@types/jest": "^29.5.0",
     "cypress": "^12.9.0",
