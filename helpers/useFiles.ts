@@ -11,7 +11,7 @@ const useFiles = async (event:any) => {
     const busboy = Busboy({ headers: req.headers })
     busboy.on('file', (name, file, info) => {
       const { filename, encoding, mimeType } = info
-      console.log(`File [${name}]: filename: ${filename}, encoding: ${encoding}, mimeType: ${mimeType}`)
+      // console.log(`File [${name}]: filename: ${filename}, encoding: ${encoding}, mimeType: ${mimeType}`)
       const saveTo = path.join(process.cwd(), 'public', `busboy-upload-${info.filename}`)
       // console.log('saveTo', saveTo)
       file.pipe(fs.createWriteStream(saveTo))
@@ -31,6 +31,7 @@ const useFiles = async (event:any) => {
       event.context.files = files
       event.context.fields = fields
       // resolve({ files, fields })
+      resolve({})
     })
     req.pipe(busboy)
   })

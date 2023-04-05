@@ -33,20 +33,20 @@ const sendFile = async() => {
     }
     data.append('text', 'text')
     data.append('json', JSON.stringify(testStore))
-    const resp = await $fetch('/api/files', {method:'POST', body:data})
+    const resp = await useFetch('/api/files', {method:'POST', body:data})
     console.log(resp)
 }
 
 const sendPost = async() => {
     const data = { a: 10, b: [0, 2] }
     const resp = await $fetch('/api/posts', {method:'POST', body:data })
-    console.log(resp)
+    // console.log(resp)
 }
 
 // const users = ref([])
 // const {data:users} = await useFetch('/api/user',{transform:(_data)=>{_data.users}})
 const {data:users}:any= await useFetch('/api/user')
-console.log(users)
+// console.log(users)
 // users.value = data.users
 </script>
 

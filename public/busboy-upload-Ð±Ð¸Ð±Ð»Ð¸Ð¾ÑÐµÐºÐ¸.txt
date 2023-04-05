@@ -1,0 +1,2 @@
+https://docs-python.ru/standart-library/modul-queue-python/
+https://docs-python.ru/standart-library/modul-collections-python/klass-deque-modulja-collections/
