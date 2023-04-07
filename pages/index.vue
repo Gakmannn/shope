@@ -25,6 +25,13 @@ const files = ref([]) as any
 const addfile = (e:any)=>{
     files.value = e.target.files
 }
+
+let alfa
+// Исполняется только на клиенте
+if (process.client) {
+    alfa = localStorage.alfa
+}
+
 const sendFile = async() => {
     const data = new FormData()
     console.log(files)
